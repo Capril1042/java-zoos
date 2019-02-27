@@ -134,8 +134,8 @@ public class AdminController
         {
             phonerepos.deleteById(id);
 
-            return "{" + "\"id\":"   + foundPhone.get().getZooid() +
-                    ",\"zooname\":" + "\"" + foundPhone.get().getZoos() + "}";
+            return "{" + "\"id\":"   + foundPhone.get().getPhoneid() +
+                    ",\"phoneid\":" + "\"" + foundPhone.get().getPhonenumber() + "}";
         }
         else
         {

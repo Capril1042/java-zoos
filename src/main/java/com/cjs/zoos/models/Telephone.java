@@ -1,5 +1,6 @@
 package com.cjs.zoos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -18,13 +19,10 @@ public class Telephone
 
     private String phonenumber;
 
-    @ManyToOne
-    @JoinColumn(name="zooid")
-    private Zoo zooid;
-
-    @OneToMany(mappedBy = "telephone")
-    @JsonIgnoreProperties("telephone")
-    private Set<Zoo> zoos = new HashSet<>();
+   @ManyToOne
+   @JoinColumn(name = "zooid", nullable = false)
+   @JsonIgnore
+   private Zoo zoo;
 
     public Telephone()
     {
@@ -60,23 +58,13 @@ public class Telephone
         this.phonenumber = phonenumber;
     }
 
-    public Zoo getZooid()
+    public Zoo getZoo()
     {
-        return zooid;
+        return zoo;
     }
 
-    public void setZooid(Zoo zooid)
+    public void setZoo(Zoo zoo)
     {
-        this.zooid = zooid;
-    }
-
-    public Set<Zoo> getZoos()
-    {
-        return zoos;
-    }
-
-    public void setZoos(Set<Zoo> zoos)
-    {
-        this.zoos = zoos;
+        this.zoo = zoo;
     }
 }

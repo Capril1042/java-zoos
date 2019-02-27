@@ -16,10 +16,9 @@ public class Zoo
 
     private String zooname;
 
-    @ManyToOne
-    @JoinColumn(name = "phoneid")
-    @JsonIgnoreProperties("zoos")
-    private Telephone telephone;
+    @OneToMany(mappedBy = "zoo")
+    @JsonIgnoreProperties("zoo")
+    private Set<Telephone> telephones = new HashSet<>();
 
     @ManyToMany(mappedBy = "zoos")
     @JsonIgnoreProperties("zoos")
@@ -49,14 +48,14 @@ public class Zoo
         this.zooname = zooname;
     }
 
-    public Telephone getTelephone()
+    public Set<Telephone> getTelephone()
     {
-        return telephone;
+        return telephones;
     }
 
-    public void setTelephone(Telephone telephone)
+    public void setTelephone(Set<Telephone> telephone)
     {
-        this.telephone = telephone;
+        this.telephones = telephone;
     }
 
     public Set<Animal> getAnimals()

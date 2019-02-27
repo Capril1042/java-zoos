@@ -18,14 +18,14 @@ public class ZooController
     @Autowired
     ZooRepository zoorepos;
 
-    //TODO Fix Zoo-Telephone relationship in Models so that the phone number shows
+
     @GetMapping("/zoos")
     public List<Zoo> getAllZoos()
     {
         return zoorepos.findAll();
     }
 
-    //TODO Fix this so that name of zoo, telephone number and animals are returned
+
     @GetMapping("/{name}")
     public List<Zoo> getZooByName(@PathVariable String name)
     {
